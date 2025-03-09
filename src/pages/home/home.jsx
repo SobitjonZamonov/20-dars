@@ -1,75 +1,27 @@
-import React, { useState } from "react";
-import { Calendar, Layout, Menu, Switch } from "antd";
-import {
-  AppstoreOutlined,
-  MailOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
-import { Avatar } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import calendar from "../../assets/calendar.svg"
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Layout, Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import calendar from "../../assets/calendar.svg";
+import wallet from "../../assets/walleticon.svg";
+import button from "../../assets/Button.svg";
+import home from "../../assets/home.svg";
+import users from "../../assets/users.svg";
+import report from "../../assets/report.svg";
+import settings from "../../assets/settings.svg";
 
-const { Sider, Content } = Layout;
+const { Content } = Layout;
 
 const Home = () => {
-  const [theme, setTheme] = useState("dark");
-  const [collapsed, setCollapsed] = useState(false);
-  const [current, setCurrent] = useState("1");
-
-  const changeTheme = (value) => {
-    setTheme(value ? "dark" : "light");
-  };
-
-  const onClick = (e) => {
-    console.log("click ", e);
-    setCurrent(e.key);
-  };
-
-  const items = [
-    {
-      key: "sub1",
-      label: "Navigation One",
-      icon: <MailOutlined />,
-      children: [
-        { key: "1", label: "Asosiy" },
-        { key: "2", label: "Mijozlar" },
-        { key: "3", label: "Hisobot" },
-        { key: "4", label: "Sozlama" },
-      ],
-    },
-  ];
-
+  const navigate = useNavigate();
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      {/* Yon panel (Sidebar) */}
-      <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed} theme={theme}>
-        <div className="logo" style={{ color: "white", textAlign: "center", padding: 20 }}>
-          Dashboard
-        </div>
-        <Menu
-          theme={theme}
-          onClick={onClick}
-          defaultOpenKeys={["sub1"]}
-          selectedKeys={[current]}
-          mode="inline"
-          items={items}
-        />
-        <div style={{ textAlign: "center", padding: 10 }}>
-          <Switch
-            checked={theme === "dark"}
-            onChange={changeTheme}
-            checkedChildren="Dark"
-            unCheckedChildren="Light"
-          />
-        </div>
-      </Sider>
-
+    <Layout>
       <Layout>
-        <Content style={{ margin: "16px", padding: 24, background: "#fff", minHeight: 280 }}>
+        <Content style={{ margin: "16px", background: "#fff" }}>
           <div>
             <div style={{
               display: "flex",
-              justifyContent: "center",
+              marginLeft: "35%",
               alignItems: "center",
               gap: "168px",
               marginBottom: "38px"
@@ -109,8 +61,12 @@ const Home = () => {
                 textAlign: "center",
                 margin: 0
               }}>
-                <h2>135 214 200 so‘m</h2>
-                <p>Umumiy nasiya:</p>
+                <h2 style={{
+                  margin: 0
+                }}>135 214 200 so‘m</h2>
+                <p style={{
+                  margin: 0
+                }}>Umumiy nasiya:</p>
               </div>
             </div>
             <div style={{
@@ -125,7 +81,7 @@ const Home = () => {
               <div style={{
                 width: "168px",
                 height: "127px",
-                border: "1px solid black",
+                border: "1px solid #ececec",
                 borderRadius: "16px"
               }}>
                 <div style={{
@@ -143,7 +99,7 @@ const Home = () => {
               <div style={{
                 width: "168px",
                 height: "127px",
-                border: "1px solid black",
+                border: "1px solid #ececec",
                 borderRadius: "16px"
               }}>
                 <div style={{
@@ -156,6 +112,77 @@ const Home = () => {
                     marginTop: "50px",
                     color: "#30AF49"
                   }}>151</p>
+                </div>
+              </div>
+            </div>
+            <div style={{
+              marginTop: "40px",
+              marginLeft: "35%"
+            }}>
+              <h2>Hamyoningiz</h2>
+              <div style={{
+                display: "flex",
+                gap: "95px"
+              }}>
+                <div style={{
+                  display: "flex",
+                  gap: "20px",
+                  marginTop: "26px"
+                }}>
+                  <img src={wallet} alt="wallet" />
+                  <div>
+                    <h3 style={{
+                      margin: 0
+                    }}>Hisobingizda</h3>
+                    <h2 style={{
+                      margin: 0
+                    }}>300 000 so‘m</h2>
+                  </div>
+                </div>
+                <img src={button} alt="add button" />
+              </div>
+              <div style={{
+                display: "flex",
+                gap: "120px",
+                marginTop: "28px"
+              }}>
+                <h2 style={{
+                  fontSize: "14px"
+                }}>Bu oy uchun to‘lov:</h2>
+                <h2 style={{
+                  fontSize: "14px",
+                  color: "#30AF49"
+                }}>To‘lov qilingan</h2>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  gap: "70px",
+                  padding: "10px 0",
+                  width: "100%",
+                  background: "#fff",
+                  boxShadow: "0 -2px 10px rgba(0, 0, 0, 0.1)",
+                  position: "fixed",
+                  bottom: "0",
+                  left: "0",
+                  justifyContent: "center",
+                }}
+              >
+                <div onClick={() => navigate("/home")} style={{ cursor: "pointer" }}>
+                  <img src={home} alt="Home" />
+                  <h2 style={{ fontSize: "10px", color: "#637D92" }}>Asosiy</h2>
+                </div>
+                <div onClick={() => navigate("/deptor")} style={{ cursor: "pointer" }}>
+                  <img src={users} alt="Users" />
+                  <h2 style={{ fontSize: "10px", color: "#637D92" }}>Mijozlar</h2>
+                </div>
+                <div style={{ cursor: "pointer" }}>
+                  <img src={report} alt="Report" />
+                  <h2 style={{ fontSize: "10px", color: "#637D92" }}>Hisobot</h2>
+                </div>
+                <div style={{ cursor: "pointer" }}>
+                  <img src={settings} alt="Settings" />
+                  <h2 style={{ fontSize: "10px", color: "#637D92" }}>Sozlamalar</h2>
                 </div>
               </div>
             </div>
