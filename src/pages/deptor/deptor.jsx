@@ -34,17 +34,23 @@ const Deptor = () => {
                         <img src={slider} alt="" />
                     </div>
                     <div>
-                        <button style={{
-                            width: "140px",
-                            height: "48px",
-                            backgroundColor: "#3478F7",
-                            color: "#fff",
-                            border: "none",
-                            borderRadius: "10px",
-                            position: "fixed",
-                            top: "80%",
-                            left: "790px"
-                        }}>Yaratish</button>
+                        <button 
+                            style={{
+                                width: "140px",
+                                height: "48px",
+                                backgroundColor: "#3478F7",
+                                color: "#fff",
+                                border: "none",
+                                borderRadius: "10px",
+                                position: "fixed",
+                                top: "80%",
+                                left: "790px",
+                                cursor: "pointer"
+                            }}
+                            onClick={() => navigate("/createdeptor")}
+                        >
+                            Yaratish
+                        </button>
                     </div>
                     <div style={{
                         marginTop: "80px"
